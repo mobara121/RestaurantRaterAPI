@@ -12,18 +12,20 @@ namespace RestaurantRaterAPI.Controllers
 {
     public class RestaurantController : ApiController
     {
+        //field to hold data
         private readonly RestaurantDbContext _context = new RestaurantDbContext();
-        //Create (POST)
+        //--Create (POST) : <IHttpActionResult> => uaing System.Threading.Tasks
+        [HttpPost]
         public async Task<IHttpActionResult> PostRestaurant(Restaurant model)
         {
 
-            if (model is null)
+            if (model == null)
             {
                 return BadRequest("Your request body cannot be empty.");
             }
             if (ModelState.IsValid)
             {
-                _context.Restaurants.Add(model);
+                _context.Restaurants.Add(model);//SaveChangeが呼ばれた時にはじめてAddされる
                 await _context.SaveChangesAsync();
 
                 return Ok("You created a restaurant and it was saved!");
@@ -32,8 +34,8 @@ namespace RestaurantRaterAPI.Controllers
             return BadRequest(ModelState);
         }
 
-        //Read(Get)
-        // Get by ID
+        //--Read(Get)
+          // Get by ID
         [HttpGet]
         public async Task<IHttpActionResult> GetById(int id)
         {
@@ -46,7 +48,7 @@ namespace RestaurantRaterAPI.Controllers
             return NotFound();
         }
 
-        // Get All
+          // Get All
         [HttpGet]
         public async Task<IHttpActionResult> GetAll()
         {
@@ -54,7 +56,7 @@ namespace RestaurantRaterAPI.Controllers
             return Ok(restaurants);
         }
 
-        //Update(PUT)
+        //--Update(PUT)
         [HttpPut]
         public async Task<IHttpActionResult> UpdateRestaurant([FromUri]int id, [FromBody]Restaurant updatedRestaurant)
         {//check if our updated restaurant is valid
@@ -82,7 +84,7 @@ namespace RestaurantRaterAPI.Controllers
             return BadRequest(ModelState);
         }
 
-        //Delete(DELETE)
+        //--Delete(DELETE)
         [HttpDelete]
         public async Task<IHttpActionResult> DeleteRestaurantById(int id)
         {

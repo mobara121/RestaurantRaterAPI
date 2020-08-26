@@ -36,8 +36,8 @@ namespace RestaurantRaterAPI.Controllers
         {
         }
 
-        [Route("api/Values/GetRandomInt")]
-        public int getrandomint()
+        [Route("api/Values/GetRandomInt")]//
+        public int GetRandomInt()
         {
             Random rand = new Random();
             return rand.Next();

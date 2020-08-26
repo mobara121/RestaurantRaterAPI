@@ -6,9 +6,10 @@ using System.Web;
 
 namespace RestaurantRaterAPI.Models
 {
+    //Restaurant Entity (The class that gets stored in the database)
     public class Restaurant
     {
-        [Key]
+        [Key] //using System.ComponentModel.DataAnnotationsを呼ぶ
         public int Id { get; set; }
 
         [Required]
@@ -17,6 +18,7 @@ namespace RestaurantRaterAPI.Models
         [Required]
         public double Rating { get; set; }
         
+        //これはreadonly property
         //public bool IsRecommended => Rating > 3.5;
         public bool IsRecommended
         {
@@ -25,5 +27,7 @@ namespace RestaurantRaterAPI.Models
                 return (Rating > 3.5);
             }
         }
+        //expression body can be used to simplify
+        //public bool IsRecommended => Rating > 3.5;
     }
 }
