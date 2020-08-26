@@ -39,13 +39,13 @@ namespace RestaurantRaterAPI.Controllers
         [HttpGet]
         public async Task<IHttpActionResult> GetById(int id)
         {
-            Restaurant restaurant = await _context.Restaurants.FindAsync(id);
+            Restaurant restaurant = await _context.Restaurants.FindAsync(id);//FindAsyncはデータがなかったらnullをreturnする
 
             if (restaurant != null)
             {
                 return Ok(restaurant);
             }
-            return NotFound();
+            return NotFound();//404 Not found to be returned
         }
 
           // Get All
@@ -71,13 +71,13 @@ namespace RestaurantRaterAPI.Controllers
                     restaurant.Name = updatedRestaurant.Name;
                     restaurant.Rating = updatedRestaurant.Rating;
 
-                    await _context.SaveChangesAsync();
+                    await _context.SaveChangesAsync();//updateしたデータをデータベースにSaveする
 
                     return Ok("Restaurant has been updated.");
                 }
 
                 // Didn't find the restaurant
-                return NotFound();
+                return NotFound();//404 Not found to be returned
             }
 
             // Return a bad request
@@ -92,12 +92,12 @@ namespace RestaurantRaterAPI.Controllers
 
             if (entity == null)
             {
-                return NotFound();
+                return NotFound();//404 Not found to be returned
             }
 
             _context.Restaurants.Remove(entity);
 
-            if (await _context.SaveChangesAsync() == 1)
+            if (await _context.SaveChangesAsync() == 1)//How many change was made? == 1 time.
             {
                 return Ok("The restaurant was deleted.");
             }
