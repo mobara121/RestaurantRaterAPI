@@ -39,7 +39,10 @@ namespace RestaurantRaterAPI.Controllers
         [HttpGet]
         public async Task<IHttpActionResult> GetById(int id)
         {
-            Restaurant restaurant = await _context.Restaurants.FindAsync(id);//FindAsyncはデータがなかったらnullをreturnする
+            //Restaurant restaurant = await _context.Restaurants.FindAsync(id);//FindAsyncはデータがなかったらnullをreturnする
+
+            List<Restaurant> restaurants = await _context.Restaurants.ToListAsync();
+            Restaurant restaurant = restaurants.FirstOrDefault(r => r.Id == id);
 
             if (restaurant != null)
             {
@@ -69,7 +72,7 @@ namespace RestaurantRaterAPI.Controllers
                 {
                     // Update the restaurant now that we found it
                     restaurant.Name = updatedRestaurant.Name;
-                    restaurant.Rating = updatedRestaurant.Rating;
+                    
 
                     await _context.SaveChangesAsync();//updateしたデータをデータベースにSaveする
 

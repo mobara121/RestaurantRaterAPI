@@ -14,7 +14,8 @@ namespace RestaurantRaterAPI.Models
         public RestaurantDbContext() : base("DefaultConnection") { }
 
 
-        //DbContextクラス と　<Restaurant>クラスをつなげていく
+        //DbContextクラス と　<Restaurant><Rating>クラスをつなげていく
         public DbSet<Restaurant> Restaurants { get; set; }
+        public DbSet<Rating> Ratings { get; set; }
     }
 }

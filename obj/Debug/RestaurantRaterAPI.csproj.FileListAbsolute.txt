@@ -89,3 +89,5 @@ C:\ElevenFiftyProjects\SD\RestaurantRaterAPI\RestaurantRaterAPI\bin\EntityFramew
 C:\ElevenFiftyProjects\SD\RestaurantRaterAPI\RestaurantRaterAPI\bin\EntityFramework.SqlServer.xml
 C:\ElevenFiftyProjects\SD\RestaurantRaterAPI\RestaurantRaterAPI\obj\Debug\RestaurantRaterAPI.Migrations.InitialMigration.resources
 C:\ElevenFiftyProjects\SD\RestaurantRaterAPI\RestaurantRaterAPI\obj\Debug\RestaurantRaterAPI.csproj.GenerateResource.cache
+C:\ElevenFiftyProjects\SD\RestaurantRaterAPI\RestaurantRaterAPI\obj\Debug\RestaurantRaterAPI.Migrations.AddedRatingTable.resources
+C:\ElevenFiftyProjects\SD\RestaurantRaterAPI\RestaurantRaterAPI\obj\Debug\RestaurantRaterAPI.Migrations.SetUpForeignKeys.resources
